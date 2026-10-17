@@ -37,6 +37,7 @@ section { display: grid; gap: 12px; min-width: 0; }
 .tile .v { font-family: var(--mono); font-size: 1.35rem; font-variant-numeric: tabular-nums; }
 .tile .s { font-size: .78rem; color: var(--faint); }
 .neg { color: var(--neg); } .pos { color: var(--pos); }
+.def { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--s1); border-radius: 8px; padding: 12px 16px; gap: 6px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 10px; min-width: 0; position: relative; }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .82rem; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 7px; }
@@ -77,6 +78,12 @@ ul { margin: 0; padding-left: 1.2em; display: grid; gap: 5px; max-width: 74ch; }
       <div class="tile"><span class="k">본전 회복 (중앙)</span><span class="v">32일</span><span class="s">2010년 이후 · 90%는 232거래일 안</span></div>
       <div class="tile"><span class="k">1년 뒤 (중앙)</span><span class="v pos">+74%</span><span class="s">2010년 이후 · 92%가 올라 있음</span></div>
     </div>
+  </section>
+
+  <section class="def" aria-label="구간의 뜻">
+    <h2>«같은 구간»이란</h2>
+    <p>매수일은 날마다 따로 정해집니다. 앞 매수일과 다음 매수일 사이가 <b>20거래일(약 4주) 이하</b>면 같은 구간, 그보다 길게 끊기면 새 구간으로 셌습니다.</p>
+    <p class="note">37개 중 9개는 하루로 끝났습니다. 2번 이상 산 28개 중 10개는 첫 매수부터 마지막 매수까지 하루도 빠지지 않았습니다. 나머지는 중간에 쉬는 날이 있었습니다(그 사이 거래일 중 산 날 비율 중앙 67%). 2020-02~03은 24거래일 동안 23번 샀습니다. 2022-04~06은 38거래일 동안 14번 샀고 중간에 최대 20거래일을 쉬었다가 다시 샀는데, 이것도 한 구간입니다.</p>
   </section>
 
   <section>
@@ -134,7 +141,7 @@ ul { margin: 0; padding-left: 1.2em; display: grid; gap: 5px; max-width: 74ch; }
       </div>
       <div id="bars"></div>
     </div>
-    <p class="note">첫 매수부터 마지막 매수까지는 중앙 10일(달력)이었습니다. 길게는 52일(2022-04~06)·77일(2008)이었습니다. 대부분은 그 사이 거의 매일 샀습니다. 다만 2022-04~06이나 2025-03~04처럼 중간에 몇 주 쉬었다가 다시 산 구간도 같은 구간으로 셌습니다.</p>
+    <p class="note">첫 매수부터 마지막 매수까지는 중앙 10일(달력)이었습니다. 길게는 52일(2022-04~06)·77일(2008)이었습니다. 2022-04~06이나 2025-03~04처럼 중간에 몇 주 쉬었다가 다시 산 구간도 같은 구간으로 셌습니다.</p>
   </section>
 
   <section>
@@ -143,7 +150,7 @@ ul { margin: 0; padding-left: 1.2em; display: grid; gap: 5px; max-width: 74ch; }
       <thead><tr><th>구간</th><th style="text-align:left">그때 무슨 일</th><th>매수 횟수</th><th>기간</th><th>최저 (날짜)</th><th>본전 회복</th><th>1년 뒤</th><th>지금 배수</th></tr></thead>
       <tbody></tbody>
     </table></div>
-    <p class="note">본전 회복은 최저 이후 처음 평단 위로 마감한 날까지, 첫 매수부터 센 거래일. «그때 무슨 일»은 참고용 메모이고 날짜는 확인을 권합니다. 2026-03은 찾지 못했습니다.</p>
+    <p class="note">본전 회복은 최저 이후 처음 평단 위로 마감한 날까지, 첫 매수부터 센 거래일. «그때 무슨 일»은 참고용 메모이고 날짜는 확인을 권합니다.</p>
   </section>
 
   <section>
@@ -196,7 +203,7 @@ const EV = {
   "2023-09-26": "10년물 5% 근접·중동 전쟁(10/7)",
   "2024-08-05": "엔 캐리 청산·고용 쇼크",
   "2025-03-11": "관세 공포 → 4/2 상호관세",
-  "2026-03-20": "확인 못 함"
+  "2026-03-20": "미국·이란 전쟁·유가 급등(브렌트 100달러대)"
 };
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const fmt = v => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(1) + "%";
